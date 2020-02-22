@@ -81,7 +81,17 @@
                       <a href="{{route("SignUp")}}" > Connectez vous</a>
                   </small>
             </form>
+
           </div>
+          @if ($errors->any())
+          <div >
+              <ul>
+               @foreach ($errors->all() as $error)
+                  <li class="card-panel red lighten-1">{{ $error }}</li>
+                @endforeach
+              </ul>
+          </div>
+       @endif
      </div>
 
 
