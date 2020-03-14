@@ -25,7 +25,12 @@ Route::get('inscription', 'MainController@inscription')->name("SignIn");
 
 Route::get('connexion', 'MainController@connexion')->name("SignUp");
 
+Route::get('demo', 'MainController@demo')->name("demo");
+
+
 Route::post('traitement', 'MainController@traitement')->name("traitement");
 
 Route::post('traitementC', 'MainController@traitementC')->name("traitementC");
+
+Route::get('DashboardEtu', 'MainController@DashboardEtu')->name("DashboardEtu");
 

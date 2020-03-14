@@ -64,11 +64,11 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                    <select>
-                      <option name="filiere" value="" disabled selected>Choisissez votre filiere</option>
-                      <option value="IRT">Informatique resaux telecoms</option>
-                      <option value="MRH">Managment des ressources humaines</option>
-                      <option value="BF">Banque</option>
+                    <select name="filiere">
+                        <option  value="" disabled selected>Choisissez votre filiere</option>
+                        @foreach ($data as $filiere)
+                        <option  value={{ $filiere->code_fil }} >{{ $filiere->lib_fil }}</option>
+                      @endforeach
                     </select>
 
                   </div>
@@ -83,7 +83,9 @@
             </form>
 
           </div>
+       
           @if ($errors->any())
+
           <div >
               <ul>
                @foreach ($errors->all() as $error)

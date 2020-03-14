@@ -28,18 +28,28 @@
      <div class="container">
          <h1 class="blue-text"> Connexion</h1>
          <div class="row">
-         <form action="route{{route("traitementC")}}" method="post">
+         <form action="{{route("traitementC")}}" method="post">
+
+            {!! csrf_field() !!}
             <div class="row">
                 <div class="input-field col s6">
-                    <input type="text" name="" id="" class="validate">
+                    <input type="text" name="pseudo" id="" class="validate">
                     <label for="">Pseudo</label>
                 </div>
             </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input type="text" name="" id="" class="validate">
+                        <input type="text" name="passwd" id="" class="validate">
                         <label for="">Mot de passe</label>
                     </div>
+                </div>
+
+                    <div class="input-field col s6">
+
+                 @if ($BadUser == "1" )
+                     <p class="card-panel red lighten-1">Pseudo ou mot de passe incorrect!!!</p>
+                 @endif
+                 
                 </div>
             </div>
             <button class="btn waves-effect blue" type="submit" >Envoyer
@@ -49,8 +59,16 @@
                   Vous n'avez pas encore de compte?
                   <a href="{{route("SignIn")}}" > Inscrivez vous</a>
               </small>
+
              </form>
          </div>
+
+         @if ($errors->any())
+            @foreach ($errors->all() as $erreur )
+            <li class="card-panel red lighten-1">{{ $erreur }}</li>
+            @endforeach
+
+         @endif
      </div>
      <p><p><p><p></p></p></p></p>
      <footer class="page-footer orange">
