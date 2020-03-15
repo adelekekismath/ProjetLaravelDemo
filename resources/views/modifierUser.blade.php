@@ -13,51 +13,51 @@
 <body>
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="{{route("Home")}}" class="brand-logo">GesEtu</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="{{route("SignUp")}}">Se connecter</a></li>
+        <ul class="right hide-on-med-and-down">
 
-          </ul>
-          <ul id="nav-mobile" class="sidenav">
-            <li><a href="{{route("SignUp")}}">Se connecter</a></li>
+            <li><a href="{{route("DashboardEtu")}}">Gestion des notes</a></li>
+        </ul>
+        <ul id="nav-mobile" class="sidenav">
 
-          </ul>
-          <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <li><a href="{{route("DashboardEtu")}}">Gestion des notes</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
-      </nav>
+    </nav>
      <div class="container">
-        <h1 class="center blue-text"> Inscription</h1>
+        <h1 class="center blue-text"> Modification</h1>
         <div class="row ">
-        <form action="{{route("traitement")}}" enctype="multipart/form-data" method="POST" class="col s12">
+        <form action="{{route("traitementModifUser")}}" enctype="multipart/form-data" method="POST" class="col s12">
                {!! csrf_field() !!}
             <div class="row">
                 <div class="input-field col s6">
-                  <input name="pseudo" type="text" class="validate">
+                  <input value={{ $user->pseudo }} name="pseudo" type="text" class="validate">
                   <label for="password">Pseudo</label>
                 </div>
 
                 <div class="input-field col s6">
-                  <input name="email" type="email" class="validate">
+                  <input name="email" value={{ $user->email }} type="email" class="validate">
                   <label for="email">Email</label>
                 </div>
 
               </div>
             <div class="row">
                 <div class="input-field col s6">
-                  <input  name="nom" type="text" class="validate">
+                  <input  name="nom" value={{ $user->nom }} type="text" class="validate">
                   <label for="first_name">Nom</label>
                 </div>
                 <div class="input-field col s6">
-                  <input name="prenom" type="text" class="validate">
+                  <input name="prenom" value={{ $user->prenom }} type="text" class="validate">
                   <label for="last_name">Prenom</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input  name="passwd" type="password"  class="validate">
+                  <input  name="passwd" type="password" value={{ $user->password }}  class="validate">
                   <label for="first_name">Mot de passe</label>
                 </div>
                 <div class="input-field col s6">
-                  <input name="Cpasswd" type="password" class="validate">
+                  <input name="Cpasswd" type="password" value={{ $user->password }} class="validate">
                   <label for="last_name">Confirmer mot de passe</label>
                 </div>
               </div>
@@ -65,7 +65,7 @@
               <div class="row">
                 <div class="input-field col s6">
                     <select name="filiere">
-                        <option  value="" disabled selected>Choisissez votre filiere</option>
+                        <option  value={{ $user->code_fil }} disabled selected>Choisissez votre filiere</option>
                         @foreach ($data as $filiere)
                         <option  value={{ $filiere->code_fil }} >{{ $filiere->lib_fil }}</option>
                       @endforeach
@@ -77,7 +77,7 @@
                     <div class="file-field input-field">
                         <div class="btn blue">
                           <span>Photo de profil</span>
-                          <input name="photo" type="file">
+                          <input name="photo" type="file" value="{{$user->lien_photo }}">
                         </div>
                         <div class="file-path-wrapper">
                           <input placeholder="Ajouter une photo de profil" class="file-path validate" type="text">
@@ -87,10 +87,7 @@
                 <button class="btn waves-effect blue" type="submit" >Envoyer
                     <i class="material-icons right">send</i>
                   </button>
-                  <small style="color:darkseagreen">
-                      Vous avez dejà un compte?
-                      <a href="{{route("SignUp")}}" > Connectez vous</a>
-                  </small>
+
             </form>
 
           </div>

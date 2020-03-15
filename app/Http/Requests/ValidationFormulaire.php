@@ -31,6 +31,7 @@ class ValidationFormulaire extends FormRequest
             'passwd'      =>  'required|max:10',
             'Cpasswd'      =>  'required|same:passwd',
             'filiere'     =>  'required',
+            'photo'       =>  'image',
 
 
 
